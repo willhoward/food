@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Cousine');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  vertical-align: top;
+  font-family: 'Cousine', sans-serif;
+}
+
+body {
+  background-color: #020202;
+  padding: 80px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 22px;
+  color: #FFF;
+}
+
+button {
+  width: auto;
+  height: 22px;
+  border: 1px solid #FFF;
+  background-color: #FFF;
+  color: #020202;
+  padding: 0 10px;
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #020202;
+  color: #FFF;
+}
+
+.select {
+  width: auto;
+  height: 22px;
+  position: relative;
+  border: 1px solid #FFF;
+  background-color: #020202;
+  color: #FFF;
+  padding: 0 30px 0 10px;
+  font-size: 14px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+.select select {
+  display: none;
+}
+
+.select::before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border-style: solid;
+  border-width: 6px 6px 0 6px;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+.container {
+  width: calc(100vw - 160px);
+  height: auto;
+  min-height: calc(100vh - 160px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #020202;
+}
+
+form > * {
+  display: inline-block;
+}
+
+.zigzag {
+  margin: 7.5% 0;
+	background: #020202;
+	position: relative;
+	height: 14px;
+	z-index: 1;
+}
+
+.zigzag::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 10px;
+  top: 110%;
+  background: linear-gradient(-135deg, #FFF 7px, transparent 0) 0 7px, linear-gradient( 135deg, #FFF 7px, transparent 0) 0 7px;
+  background-position: top left;
+  background-repeat: repeat-x;
+  background-size: 14px 14px;
+}
+
+.zigzag::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14px;
+  top: 100%;
+  background: linear-gradient(-135deg, #020202 7px, transparent 0) 0 7px, linear-gradient( 135deg, #020202 7px, transparent 0) 0 7px;
+  background-position: top left;
+  background-repeat: repeat-x;
+  background-size: 14px 14px;
+}

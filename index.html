@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./index.css"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="zigzag"></div>
+      <form>
+        <p>I'm looking for a </p>
+        <div class="select">
+          <span id="eatery-selected"></span>
+          <select id="eatery-type">
+          </select>
+        </div>
+        <p> to eat </p>
+        <div class="select">
+          <span id="food-selected"></span>
+          <select id="food-type">
+          </select>
+        </div>
+        <p>.</p>
+        <button>
+          Go
+        </button>
+      </form>
+      <div class="zigzag"></div>
+    </div>
+  </body>
+  <footer>
+    <script>
+      var data = {
+        eateries: [
+          {
+            type: "restaurant",
+            options: [
+              {
+                name: "Tortilleria El Pastor",
+                street: "58 Stanworth Street",
+                postcode: "SE1 3NY",
+                type: "tacos",
+                comments: "No reservations, walk in only. Order at the bar, they sell 5 types of tacos. Five tacos and a beer is about £20."
+              },
+              {
+                name: "Herman ze German",
+                street: "33 Old Compton Street",
+                postcode: "W1D 5JU",
+                type: "wurst",
+                comments: "Order at the bar, the schnitzel is particularly generous. Small places, they get pretty busy at 1pm so go early for lunch."
+              },
+              {
+                name: "Patty + Bun",
+                street: "18 Old Compton Street",
+                postcode: "W1D 4TN",
+                type: "burgers",
+                comments: "Small places and they get busy fast, booking essential for 4+ people. Wait to be seated. Small burgers, made quickly and (very) dirtily. Every day there’s a £5 burger (it varies which) so go for that one and get two or three."
+              }
+            ]
+          },
+          {
+            type: "takeaway",
+            options: [
+              {
+                name: "Prime Burger",
+                street: "St Pancras Station, Euston Road",
+                postcode: "N1C 4QP",
+                type: "burgers",
+                comments: "Order and collect, these are probably the least greasy takeaway burger you can find and the one with blue cheese is amazing. On the pricey end though."
+              }
+            ]
+          }
+        ]
+      }
+      // Initialise empty arrays to hold the eatery and food types.
+      var eateryTypes = [];
+      var foodTypes = [];
+
+      // Loop over the eateries.
+      $.each(data.eateries,function(i, eatery) {
+        // Push each new eatery type to the eatery types array.
+        if (foodTypes.indexOf(eatery.type) < 0) {
+          eateryTypes.push(eatery.type);
+        }
+
+        // Loop over the eatery options.
+        // Push each new food type to the food types array.
+        $.each(eatery.options, function(i, option) {
+          if (foodTypes.indexOf(option.type) < 0) {
+            foodTypes.push(option.type);
+          }
+        });
+      });
+
+      // Sort the eatery and food arrays alphabetically.
+      eateryTypes.sort();
+      foodTypes.sort();
+
+      // Add each eatery and food option to the relevant select field.
+      $.each(eateryTypes, function(i, eatery) {
+        $('#eatery-type').append('<option value="' + eatery + '">' + eatery + '</option>');
+      })
+      $.each(foodTypes, function(i, food) {
+        $('#food-type').append('<option value="' + food + '">' + food + '</option>');
+      });
+
+      // Set the initial eatery and food type to the first option.
+      $('#eatery-selected').html(eateryTypes[0]);
+      $('#food-selected').html(foodTypes[0]);
+    </script>
+  </footer>
+</html>

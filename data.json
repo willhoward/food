@@ -1,0 +1,42 @@
+{
+  "eateries": [
+    {
+      "type": "restaurant",
+      "options": [
+        {
+          "name": "Tortilleria El Pastor",
+          "street": "58 Stanworth Street",
+          "postcode": "SE1 3NY",
+          "type": "tacos",
+          "comments": "No reservations, walk in only. Order at the bar, they sell 5 types of tacos. Five tacos and a beer is about £20."
+        },
+        {
+          "name": "Herman ze German",
+          "street": "33 Old Compton Street",
+          "postcode": "W1D 5JU",
+          "type": "wurst",
+          "comments": "Order at the bar, the schnitzel is particularly generous. Small places, they get pretty busy at 1pm so go early for lunch."
+        },
+        {
+          "name": "Patty + Bun",
+          "street": "18 Old Compton Street",
+          "postcode": "W1D 4TN",
+          "type": "burgers",
+          "comments": "Small places and they get busy fast, booking essential for 4+ people. Wait to be seated. Small burgers, made quickly and (very) dirtily. Every day there’s a £5 burger (it varies which) so go for that one and get two or three."
+        }
+      ]
+    },
+    {
+      "type": "takeaway",
+      "options": [
+        {
+          "name": "Prime Burger",
+          "street": "St Pancras Station, Euston Road",
+          "postcode": "N1C 4QP",
+          "type": "burgers",
+          "comments": "Order and collect, these are probably the least greasy takeaway burger you can find and the one with blue cheese is amazing. On the pricey end though."
+        }
+      ]
+    }
+  ]
+}
