@@ -42,17 +42,30 @@ button:hover {
   border: 1px solid #FFF;
   background-color: #020202;
   color: #FFF;
-  padding: 0 30px 0 10px;
   font-size: 14px;
   line-height: 22px;
   cursor: pointer;
 }
 
 .select select {
-  display: none;
+  width: 100%;
+  height: 20px;
+  padding: 0 30px 0 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  font-size: 14px;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  background-image: none;
+  color: #FFF;
+  cursor: pointer;
 }
 
-.select::before {
+.select::after {
   content: '';
   width: 0;
   height: 0;
@@ -62,6 +75,7 @@ button:hover {
   border-style: solid;
   border-width: 6px 6px 0 6px;
   border-color: #ffffff transparent transparent transparent;
+  pointer-events: none;
 }
 
 .container {
