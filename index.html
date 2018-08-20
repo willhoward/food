@@ -6,24 +6,27 @@
   </head>
   <body>
     <div class="container">
-      <div class="zigzag"></div>
-      <form>
-        <p>I'm looking for a </p>
-        <div class="select">
-          <select id="eatery-type">
-          </select>
-        </div>
-        <p> to eat </p>
-        <div class="select">
-          <select id="food-type">
-          </select>
-        </div>
-        <p>.</p>
-        <button>
-          Go
-        </button>
-      </form>
-      <div class="zigzag"></div>
+      <div>
+        <form id="form">
+          <p>I'm looking for a </p>
+          <div class="select">
+            <select id="eatery-type">
+            </select>
+          </div>
+          <p> to eat </p>
+          <div class="select">
+            <select id="food-type">
+            </select>
+          </div>
+          <p>.</p>
+          <button>
+            Go
+          </button>
+        </form>
+        <div class="line"></div>
+        <ul class="results" id="results">
+        </ul>
+      </div>
     </div>
   </body>
   <footer>
@@ -105,6 +108,31 @@
       // Set the initial eatery and food type to the first option.
       $('#eatery-selected').html(eateryTypes[0]);
       $('#food-selected').html(foodTypes[0]);
+
+      // Initialise an empty array to store the results.
+      var results = [];
+
+      // Handle the form submission.
+      $('#form').submit(function(e) {
+        e.preventDefault();
+
+        // Filter the eateries by the selected type.
+        var eateryResults = data.eateries.filter(function(eatery) {
+          return eatery.type === $('#eatery-type').val();
+        });
+
+        // Filter the options by the selected type.
+        $.each(eateryResults[0].options, function(i, option) {
+          if (option.type === $('#food-type').val()) {
+            // Push matching options to the results array.
+            results.push(option);
+          }
+        });
+
+        $.each(results, function(i, option) {
+          $('#results').append('<li>' + option.comments + '</li>');
+        });
+      });
     </script>
   </footer>
 </html>
