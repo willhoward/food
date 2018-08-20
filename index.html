@@ -24,8 +24,8 @@
           </button>
         </form>
         <div class="line"></div>
-        <ul class="results" id="results">
-        </ul>
+        <div class="results" id="results">
+        </div>
       </div>
     </div>
   </body>
@@ -116,6 +116,10 @@
       $('#form').submit(function(e) {
         e.preventDefault();
 
+        // Empty the results DOM element and clear the array.
+        $('#results').empty();
+        results = [];
+
         // Filter the eateries by the selected type.
         var eateryResults = data.eateries.filter(function(eatery) {
           return eatery.type === $('#eatery-type').val();
@@ -129,9 +133,13 @@
           }
         });
 
-        $.each(results, function(i, option) {
-          $('#results').append('<li>' + option.comments + '</li>');
-        });
+        if (results.length) {
+          $.each(results, function(i, option) {
+            $('#results').append('<div class="result"><div class="result--number"><p>' + i + '.' + '</p></div><div class="result--content"><p>' + option.name + '<br /><br />' + option.comments + '<br /><br />' + option.street + ', ' + option.postcode + '</p></div></div>');
+          });
+        } else {
+          $('#results').append('<p>Sorry, no ' + $('#eatery-type').val() + ' serving ' + $('#food-type').val() + ' found at the moment.');
+        }
       });
     </script>
   </footer>

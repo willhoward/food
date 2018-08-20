@@ -98,10 +98,18 @@ form > * {
   background-color: #FFF;
 }
 
-ul.results {
-  padding: 0;
-  margin: 0;
-  color: #FFF;
-  list-style-type: decimal;
-  list-style-position: inside;
+.result {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.result--number {
+  flex: 0 0 40px;
+}
+
+.result--content {
+  flex: 1 1 auto;
 }
