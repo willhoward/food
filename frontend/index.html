@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="index.css"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <form id="form">
+          <p>I'm looking for a </p>
+          <div class="select">
+            <select id="eatery-type">
+            </select>
+          </div>
+          <p> to eat </p>
+          <div class="select">
+            <select id="food-type">
+            </select>
+          </div>
+          <p>.</p>
+          <button>
+            Go
+          </button>
+        </form>
+        <div class="line"></div>
+        <div class="results" id="results">
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <script>
+      // Get the JSON data object from the server.
+      $.getJSON( "http://localhost:3000/data", function( data ) {
+        // Initialise empty arrays to hold the eatery and food types.
+        var eateryTypes = [];
+        var foodTypes = [];
+
+        // Loop over the eateries.
+        $.each(data.eateries,function(i, eatery) {
+          // Push each new eatery type to the eatery types array.
+          if (foodTypes.indexOf(eatery.type) < 0) {
+            eateryTypes.push(eatery.type);
+          }
+
+          // Loop over the eatery options.
+          // Push each new food type to the food types array.
+          $.each(eatery.options, function(i, option) {
+            if (foodTypes.indexOf(option.type) < 0) {
+              foodTypes.push(option.type);
+            }
+          });
+        });
+
+        // Sort the eatery and food arrays alphabetically.
+        eateryTypes.sort();
+        foodTypes.sort();
+
+        // Add each eatery and food option to the relevant select field.
+        $.each(eateryTypes, function(i, eatery) {
+          $('#eatery-type').append('<option value="' + eatery + '">' + eatery + '</option>');
+        })
+        $.each(foodTypes, function(i, food) {
+          $('#food-type').append('<option value="' + food + '">' + food + '</option>');
+        });
+
+        // Set the initial eatery and food type to the first option.
+        $('#eatery-selected').html(eateryTypes[0]);
+        $('#food-selected').html(foodTypes[0]);
+
+        // Initialise an empty array to store the results.
+        var results = [];
+
+        // Handle the form submission.
+        $('#form').submit(function(e) {
+          e.preventDefault();
+
+          // Empty the results DOM element and clear the array.
+          $('#results').empty();
+          results = [];
+
+          // Filter the eateries by the selected type.
+          var eateryResults = data.eateries.filter(function(eatery) {
+            return eatery.type === $('#eatery-type').val();
+          });
+
+          // Filter the options by the selected type.
+          $.each(eateryResults[0].options, function(i, option) {
+            if (option.type === $('#food-type').val()) {
+              // Push matching options to the results array.
+              results.push(option);
+            }
+          });
+
+          if (results.length) {
+            $.each(results, function(i, option) {
+              $('#results').append('<div class="result"><div class="result--number"><p>' + (i + 1) + '.' + '</p></div><div class="result--content"><p>' + option.name + '<br /><br />' + option.comments + '<br /><br /><span class="light">' + option.street + ', ' + option.postcode + '</span></p></div></div>');
+            });
+          } else {
+            $('#results').append('<p>Sorry, no ' + $('#eatery-type').val() + 's serving ' + $('#food-type').val() + ' found at the moment.');
+          }
+        });
+      });
+    </script>
+  </footer>
+</html>
