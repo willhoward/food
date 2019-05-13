@@ -42,6 +42,13 @@
           "postcode": "N1C 4QP",
           "type": "burgers",
           "comments": "Order and collect, these are probably the least greasy takeaway burger you can find and the one with blue cheese is amazing. On the pricey end though."
+        },
+        {
+          "name": "Wellbeing Kitchen",
+          "street": "232 Shaftesbury Avenue",
+          "postcode": "WC2H 8EG",
+          "type": "korean",
+          "comments": "Go for the katsu curry, it's a classic. A large curry is £6.50 and comes in a big bowl with heaps of crunchy fried chicken on top. The teryaki isn't bad either."
         }
       ]
     }
