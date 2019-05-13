@@ -23,6 +23,13 @@
           "postcode": "W1D 4TN",
           "type": "burgers",
           "comments": "Small places and they get busy fast, booking essential for 4+ people. Wait to be seated. Small burgers, made quickly and (very) dirtily. Every day there’s a £5 burger (it varies which) so go for that one and get two or three."
+        },
+        {
+          "name": "Vapiano",
+          "street": "12 St. Giles Square",
+          "postcode": "WC2H 8AP",
+          "type": "pasta",
+          "comments": "Fresh pasta cooked right in front of you. There are a few of these kicking about but the best one is at Centre Point."
         }
       ]
     },
